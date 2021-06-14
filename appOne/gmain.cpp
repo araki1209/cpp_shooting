@@ -1,3 +1,6 @@
+#define _6
+//123
+#ifdef _123
 #include"libOne.h"
 class CHARACTER {
 protected:    
@@ -72,4 +75,95 @@ void gmain() {
         }
     }
 }
+#endif
+//4
+#ifdef _4
+#include"libOne.h"
+class ENEMY {
+private:
+    int Img;
+    float Px, Py, Vx;
+public:
+    void setImage(int img) {
+        Img = img;
+    }
+    void init() {
+        Px = random() % (int)width;
+        Py = random() % (int)height;
+        Vx = random() % 5 + 1.0f;
+    }
+    void move() {
+        Px += Vx;
+    }
+    void draw() {
+        image(Img, Px, Py);
+    }
+};
+void gmain() {
+    window(1920, 1080, full);
+    hideCursor();
+    int enemyImg = loadImage("assets\\enemy.png");
+    int num = 100;
+    ENEMY* enemy = new ENEMY[num];
+    for (int i = 0; i < num; i++) {
+    enemy[i].setImage(enemyImg);
+    enemy[i].init();
+    }
+    while (notQuit) {
+        clear();
+        for (int i = 0; i < num; i++) {
+            enemy[i].move();
+            enemy[i].draw();
+        }
+    }
+    delete[] enemy;
+}
+#endif
+//5
+#ifdef _5
+#include"libOne.h"
+class BABY {
+public:
+    BABY() {
+        textSize(200);
+        text("Hello", 700, 300);
+    }
+    ~BABY() {
+        textSize(200);
+        text("GoodBye", 700, 600);
+    }
+};
+void func() {
+    BABY baby;
+}
+void gmain() {
+    window(1920, 1080, full);
+    BABY* baby = new BABY;
+    delete baby;
+    while (notQuit) {
 
+    }
+}
+#endif
+//6
+#ifdef _6
+#include"libOne.h"
+#include"TAKO.h"
+void gmain() {
+    window(1920, 1080, full);
+    int takoImg = loadImage("assets\\enemy.png");
+    int num = 30;
+    TAKO* tako = new TAKO[num];
+    for (int i = 0; i < num; i++) {
+        tako[i].setImage(takoImg);
+        tako[i].init();
+    }
+    while (notQuit) {
+        for (int i = 0; i < num; i++) {
+        tako[i].move();
+        tako[i].draw();
+        }
+    }
+    delete[]tako;
+}
+#endif
