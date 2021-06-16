@@ -1,9 +1,9 @@
-#define _6
+#define _10
 //123
 #ifdef _123
 #include"libOne.h"
 class CHARACTER {
-protected:    
+protected:   
     int Img = 0;
     float Px = 0, Py = 0, Angle = 0;
     float Vx = 0, Vy = 0, AngSpeed = 0;
@@ -165,5 +165,129 @@ void gmain() {
         }
     }
     delete[]tako;
+}
+#endif
+//7
+#ifdef _7
+#include"libOne.h"
+class FLOAT2 {
+public:
+    float x,y;
+};
+void set(FLOAT2& f2) {
+    f2.x = 100;
+    f2.y = 10;
+}
+void gmain() {
+    window(1000, 1000,full);
+    FLOAT2 pos;
+    set(pos);
+
+    printSize(200);
+    print(pos.x);
+    print(pos.y);
+    while (notQuit) {
+
+    }
+}
+#endif
+//8
+#ifdef _8
+#include"libOne.h"
+class FLOAT2 {
+public:
+    float x, y;
+    FLOAT2(float x,float y) {
+        this->x = x;
+        this->y = y;
+    }
+};
+void set(FLOAT2& f2) {
+    f2.x = 100;
+    f2.y = 10;
+}
+void gmain() {
+    window(1000, 1000, full);
+    FLOAT2 pos(100, 10);
+
+    printSize(200);
+    print(pos.x);
+    print(pos.y);
+    while (notQuit) {
+
+    }
+}
+#endif
+//9
+#ifdef _9
+#include"libOne.h"
+class FLOAT2 {
+public:
+    float x=0, y=0;
+    FLOAT2(){
+    }
+    FLOAT2(float x, float y) {
+        this->x = x;
+        this->y = y;
+    }
+};
+void gmain() {
+    window(1000, 1000, full);
+
+    FLOAT2 pos[2] = {
+         FLOAT2(100, 10),
+         FLOAT2(200,20),
+    };
+
+    printSize(200);
+    print(pos[1].x);
+    print(pos[1].y);
+    while (notQuit) {
+
+    }
+}
+#endif
+//10
+#ifdef _10
+#include"libOne.h"
+class FLOAT2 {
+public:
+    float x = 0, y = 0;
+    FLOAT2() {
+    }
+    FLOAT2(float x, float y) {
+        this->x = x;
+        this->y = y;
+    }
+    FLOAT2 operator- (FLOAT2& f2) {
+        return FLOAT2(x - f2.x, y - f2.y);
+    }
+    FLOAT2 operator* (float f) {
+        return FLOAT2(x * f, y * f);
+    }
+    void operator+=(const FLOAT2& f2) {
+        x += f2.x;
+        y += f2.y;
+    }
+    void normalize() {
+        float mag = sqrt(x * x + y * y);
+        x /= mag;
+        y /= mag;
+    }
+};
+void gmain() {
+    window(1000, 1000, full);
+
+    FLOAT2 pos(100, 10);
+    FLOAT2 vec(200, 20);
+    vec.normalize();
+    pos += vec*5.0f;
+
+    printSize(200);
+    print(pos.x);
+    print(pos.y);
+    while (notQuit) {
+
+    }
 }
 #endif
